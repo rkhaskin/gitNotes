@@ -1,0 +1,31 @@
+ (use "git reset HEAD <file>..." to unstage)
+
+        new file:   file2.txt
+
+
+Slavik@DESKTOP-MAOECUG MINGW64 ~/learning/learngit2 (master)
+$ git commit -m "added old file"          -- committed with incorrect message
+[master 748dfa0] added old file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file2.txt
+ 
+ $ git log
+commit 748dfa06554e434767598cfed7e1e8ce16d51483 (HEAD -> master)
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 15:52:46 2020 -0500
+
+    added old file
+	
+$ git commit --amend -m "added new file"       -- redo the commit with a correct message
+[master b595f86] added new file
+ Date: Sun Mar 1 15:52:46 2020 -0500
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file2.txt
+
+Slavik@DESKTOP-MAOECUG MINGW64 ~/learning/learngit2 (master)
+$ git log
+commit b595f86f3cc3b880ebfff4643d03a3c788c03fdf (HEAD -> master)
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 15:52:46 2020 -0500
+
+    added new file	

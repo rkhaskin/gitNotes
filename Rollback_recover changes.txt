@@ -1,0 +1,37 @@
+https://www.youtube.com/watch?v=FdZecVxzJbk -  Fixing Common Mistakes and Undoing Bad Commits
+
+Back out changes
+  -- from staging area (green) . The file goes back to working area (red) with changes kept
+        git reset HEAD filename.txt
+		-- to get rid of changes from the working area. The file goes back to the last commit state.
+		   git checkout -- filename.txt
+  
+  -- from committed area.
+	 * reset --soft
+	   grab the hash of the last good commit
+	      git reset --soft shhbsahdb  (last good commit hash, rollback commits up to it)
+	   files in the deleted commit will appear in staging area.	  
+	 
+	 
+	 git reset --mixed (this one is default)
+	   grab the hash of the last good commit
+	      git reset shhbsahdb  (last good commit hash, rollback commits up to it). No need to say --mixed as it is a default
+	   files in the deleted commit appear in working area	  
+	     
+	 git reset --hard
+	   grab the hash of the last good commit
+	    git reset --hard shhbsahdb
+	   will delete all our TRACKED changes, will do nothing to untracked files.
+     
+	 to get rid of untracted files:
+	   git clean -df (d - untracked directories, f - untracked files)
+	   
+	 Restore deleted files after "git reset" is possible. Depends on the amount of time between deletion and garbage collection (default around 30 days).
+		git reflog (shows all the history)
+	 get the hash before the reset:
+	    git checkout 565364523 (hash before reset)
+		git log (shows our deleted changes)
+     we are in the detached HEAD state (on a branch) after checkout older hash
+        git branch (shows us all the branches, we are in the detached head state branch, which will be garbage collected)		
+     we need to create another branch from detachewd head branch:
+        git branch backup (will have all my deleted changes)

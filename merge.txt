@@ -1,0 +1,50 @@
+HEAD is a reference to the last commit in the currently check-out branch. You can think of the HEAD as the "current branch". 
+When you switch branches with git checkout, the HEAD revision changes to point to the tip of the new branch.
+
+-- merge
+   -- fast-forward - only possible if no changes were made on the target branch. There will be no indication that there was ever a branch:
+      
+	  master has 2 commits
+	    O -> O
+	  branch1 has 3 commits
+               O -> O -> O	
+      after 
+         git checkout master
+         git merge branch1
+        O -> O -> O -> O -> O		 
+	  commits from branch1 are merged into master without any indication that they were made on another branch
+    -- --no-ff - do not use fast-forward commit
+	  master has 2 commits
+	    O -> O
+	  branch1 has 3 commits
+               O -> O -> O	
+      after 
+         git checkout master
+         git merge branch1 --no-ff
+	     O -> O            -> R (where O is merged commit, consistinig of 3 commits from the branch1)
+               O -> O -> O	
+
+-- before commit see if master has changed:
+$ git log --all --decorate --graph --oneline
+* 329d9bb (HEAD -> master) changes on master        -- made changes and committed on master.
+| * 34115b1 (branch2) changes on branch2            -- made changes and committed on branch 2
+|/
+* 663d06b (branch1) renamed
+* f867948 test delete after commit
+* 80872ee first commit
+
+Slavik@DESKTOP-MAOECUG MINGW64 ~/learning/learngit (master)
+$ git merge branch2
+Merge made by the 'recursive' strategy.
+ testGit.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+ 
+$ git log --all --decorate --graph --oneline
+*   b413006 (HEAD -> master) Merge branch 'branch2'      -- new commit is created by adding branch2 and master commits
+|\
+| * 34115b1 (branch2) changes on branch2                 -- branch history preserved
+* | 329d9bb changes on master                            -- master history preserved
+|/
+* 663d06b (branch1) renamed
+* f867948 test delete after commit
+* 80872ee first commit 

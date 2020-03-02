@@ -1,0 +1,52 @@
+if I need to undo changes which have been pulled by others:
+
+$ git log
+commit 83eb8a264b2b3fa43dd48cd2997ff64684a85a1e (HEAD -> branch1)
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 15:52:46 2020 -0500
+
+    added new file
+
+commit b0001167f4bf5d93838ab9a646e793f70f95a039
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 14:43:56 2020 -0500
+
+    file 2
+
+commit 09062037ae6b3303b2d47fb6e361a9c9d1511600 (origin/master, master)
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 14:29:14 2020 -0500
+
+    first commit
+
+I want to revert the last commit:
+
+git revert 	83eb8a2
+
+$ git log
+commit bd32a5311446a85973dfc9c4ef2ad979b88857e4 (HEAD -> branch1)     -- history is not changed. A new commit is added to the top
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 16:32:36 2020 -0500
+
+    Revert "added new file"
+
+    This reverts commit 83eb8a264b2b3fa43dd48cd2997ff64684a85a1e.
+
+commit 83eb8a264b2b3fa43dd48cd2997ff64684a85a1e
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 15:52:46 2020 -0500
+
+    added new file
+
+commit b0001167f4bf5d93838ab9a646e793f70f95a039
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 14:43:56 2020 -0500
+
+    file 2
+
+commit 09062037ae6b3303b2d47fb6e361a9c9d1511600 (origin/master, master)
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 14:29:14 2020 -0500
+
+    first commit
+	

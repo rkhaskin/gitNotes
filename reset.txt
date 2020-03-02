@@ -1,0 +1,22 @@
+-- reset - used to rollback pushed changes
+
+$ git log --all --decorate --oneline --graph
+*   b413006 (HEAD -> master) Merge branch 'branch2'
+|\
+| * 34115b1 changes on branch2
+* | 329d9bb changes on master
+|/
+* 663d06b (branch1) renamed
+* f867948 test delete after commit
+* 80872ee first commit
+
+$ git reset HEAD~1
+Unstaged changes after reset:
+M       testGit.txt
+
+Slavik@DESKTOP-MAOECUG MINGW64 ~/learning/learngit (master)
+$ git log --all --decorate --oneline --graph
+* 329d9bb (HEAD -> master) changes on master   -- last change on master before merge commit.
+* 663d06b (branch1) renamed
+* f867948 test delete after commit
+* 80872ee first commit

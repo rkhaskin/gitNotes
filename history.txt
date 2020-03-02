@@ -1,0 +1,15 @@
+-- git history
+   git log --oneline --decorate --all --graph
+   
+   git log 123eeev...643t35335 (hash range)
+   git log --since="3 days ago"
+   
+   -- history of an individual file:
+      git log -- filename.txt
+	  
+   -- history of an individual file including renames:
+      git log --follow -- filename.txt
+   
+
+   -- show changes for a specific file:
+     git show dsahdajsd (hash)

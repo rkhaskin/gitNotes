@@ -1,0 +1,54 @@
+ -- delete untracked files
+    use bash command or any other command outside git to delete untracked files
+	
+ -- delete tracked files. Works from working, staging areas and after commit is done
+    git rm filename.txt
+	deletion is not yet permanent. Need to commit first.
+	-- to unstage (not delete) a deleted file:
+	   git reset HEAD filename.txt
+	if we want to discard our changes, run this on the working area file.
+       git checkout -- filename.txt	
+
+  -- delete a tracked file with bash command only:
+     rm filename.txt
+	 run "ls" command, the file is no longer listed
+	 run "status" command. The file will be in the working directory (not staged for commit) as deleted: filename.txt
+   we need it to be in the staging area for commit.
+   we can do:
+      git add -A
+   which will add and update any changes to the working directory, including renames and deletions.
+      git status (now we see the deletion staged)
+	  git commit
+   -- delete tracked folder - same as file, except "rm -rf"	  
+	
+  -- to check tracked files:
+    git ls-files  
+	
+ -- rename files:
+    -- thru git:
+       git mv level2.txt 2.txt 
+       git status will show staged file: renamed: level2.txt -> 2.txt	  
+       git commit -m "renamed"	
+        -- rename file and backout	
+	       same steps above until commit
+	       before committing the file:
+           git mv 2.txt level2.txt
+		   git status will show clean working directory
+		-- or git reset HEAD level2.txt (old filename) and follow further instructions to reet old file and delete new
+           		
+	-- thru bash or windows/mac:
+       mv level2.txt 2.txt 
+       git sees it as 2 operations: added a new file (untracked) and deleted an old file (changes not staged for commit)
+       need to call the below. It will do recursive add and also take care of delted and renamed files.
+	      git add -A
+	   -- or if you have other files which you do not want to stage:
+	      git add 2.txt
+		  git add -u (update index, after which the status will show in staging area: renamed level2.txt -> 2.txt)
+
+
+	   git status will show: changes to be committed: renamed: 	 level2.txt -> 2.txt
+          git commit -m "renamed"
+	   
+   	
+    
+

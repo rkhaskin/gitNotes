@@ -1,0 +1,35 @@
+$ git log --stat
+commit cce346135e74536c9ff99e98a1c91a0bffae3aa9 (HEAD -> master)
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 15:52:46 2020 -0500
+
+    added new file
+
+ file2.txt         | 1 +
+ forgottenfile.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 09062037ae6b3303b2d47fb6e361a9c9d1511600 (origin/master)
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 14:29:14 2020 -0500
+
+    first commit
+
+ file1.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+Slavik@DESKTOP-MAOECUG MINGW64 ~/learning/learngit2 (master)
+$ git branch
+  branch1
+* master
+
+I wanted to commit cce346135e74536c9ff99e98a1c91a0bffae3aa9 to branch1, not master 
+
+1) copy cce346135e74536c9ff99e98a1c91a0bffae3aa9
+2) git checkout branch1
+3) git cherry-pick cce346135e74536c9ff99e98a1c91a0bffae3aa9        ----- added commit to the branch
+4) remove the commit from master, as it is not deleted when copied to the branch
+    
+	*) git reset --hard 09062037a
+	   -- if there are any untracked files, run
+	      git clean -df

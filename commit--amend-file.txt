@@ -1,0 +1,55 @@
+I forgot to add a file to last commit. And I do not want to create a new commit.
+
+I can use commit --amend to add a file to the last commit.
+
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   forgottenfile.txt
+
+---- do it only if the changes have not been pushed to others
+
+git commit --amend
+
+a file editor opens. I can edit the message. In the section Changes to be committed we see the forgotten file. Close the file.
+@@@@@@@@@@@@@@@@@@@@@@@@@
+added new file
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Sun Mar 1 15:52:46 2020 -0500
+#
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	new file:   file2.txt
+#	new file:   forgottenfile.txt
+#		
+
+$ git commit --amend
+[master cce3461] added new file
+ Date: Sun Mar 1 15:52:46 2020 -0500
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file2.txt
+ create mode 100644 forgottenfile.txt
+
+
+$ git log --stat
+commit cce346135e74536c9ff99e98a1c91a0bffae3aa9 (HEAD -> master)
+Author: Rostislav Khaskin <rkhaskin@yahoo.com>
+Date:   Sun Mar 1 15:52:46 2020 -0500
+
+    added new file
+
+ file2.txt         | 1 +
+ forgottenfile.txt | 1 +
+ 2 files changed, 2 insertions(+)
+ 

@@ -1,0 +1,9 @@
+rebase
+
+before doing rebase, do git fetch.
+"git fetch" is a non-destructive command that simply updates the references.
+
+git pull --rebase origin master  -- merges (rebases) changes on the branch
+
+-- squash-and-rebase-your-git-commits/
+https://blog.carbonfive.com/2017/08/28/always-squash-and-rebase-your-git-commits/
